@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IREEMPLAZABLE</title>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #4338ca;
+            --secondary: #0ea5e9;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        body {
+            background-color: #f1f5f9;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0 auto;
+        }
+        
+        .logo-icon {
+            font-size: 1.8rem;
+        }
+        
+        .hero {
+            padding: 3rem 0;
+            text-align: center;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .module-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 1.5rem;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .module-img {
+            width: 100%;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-size: 5rem;
+            background: linear-gradient(to right, #e0e7ff, #c7d2fe);
+        }
+        
+        .module-content {
+            padding: 1.5rem;
+        }
+        
+        .module-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .module-status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        
+        .status-available {
+            background-color: #ecfdf5;
+            color: var(--success);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .btn-outline {
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            background-color: transparent;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin: 2rem 0 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            margin-bottom: 1.5rem;
+            background-color: #000;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .module-details {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .module-summary {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            display: none;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+        }
+        
+        .footer-section {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 1.5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .hero {
+                padding: 2rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .module-content h3 {
+                font-size: 1.3rem;
+            }
+        }
+        
+        /* Estilos para pantalla de login */
+        #login-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(31, 41, 55, 0.95);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .login-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+<!-- Pantalla de login -->
+<div id="login-screen">
+    <div class="login-container">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+            <span style="font-size: 3rem; margin-bottom: 1rem; display: block;">🧠</span>
+            <h2 style="font-size: 1.5rem; color: var(--dark); margin-bottom: 0.5rem;">Bootcamp de Automatización</h2>
+            <p style="color: var(--gray); font-size: 0.9rem;">Ingresa el código de acceso para continuar</p>
+        </div>
+        <div style="margin-bottom: 1.5rem;">
+            <input type="password" id="access-code" placeholder="Código de acceso" style="width: 100%; padding: 0.75rem; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 1rem; margin-bottom: 0.5rem;">
+            <p id="error-message" style="color: var(--danger); font-size: 0.85rem; display: none; margin-top: 0.5rem;">Código incorrecto. Inténtalo de nuevo.</p>
+        </div>
+        <button id="login-button" class="btn btn-primary" style="width: 100%;">Acceder</button>
+    </div>
+</div>
+
+<header>
+    <div class="container header-content">
+        <div class="logo">
+            <span class="logo-icon">🧠</span>
+            <span>IRREEMPLAZABLE</span>
+        </div>
+    </div>
+</header>
+
+<div class="hero">
+    <div class="container">
+        <h1>Bootcamp de Automatización Laboral</h1>
+        <p>Bienvenido a la plataforma oficial donde encontrarás todos los materiales y grabaciones del programa.</p>
+    </div>
+</div>
+
+<main class="container">
+    <section id="module-section">
+        <h2 class="section-title">Sesión 1</h2>
+        
+        <!-- Tarjeta del módulo unificada con video y contenido -->
+        <div class="module-card" style="padding-bottom: 1.5rem;">
+            <div class="module-content">
+                <span class="module-status status-available">Disponible</span>
+                <h3>Sesión 1: Matriz de actividades</h3>
+                <p>Define tus objetivos, identifica las actividades de tu día a día y descubre el tiempo que te toman.</p>
+            </div>
+            
+            <div class="video-container" style="margin: 1.5rem;">
+                <iframe id="vimeo-player" style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://player.vimeo.com/video/1078651645" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            
+            <button id="summary-toggle" class="btn btn-outline" style="margin-top: 1.5rem; display: block; margin-left: auto; margin-right: auto; width: 200px;">Ver Resumen</button>
+            
+            <div id="summary-content" class="module-summary">
+                <h4>Resumen del Módulo 1: Modelos de lenguaje</h4>
+                <p style="margin-bottom: 1rem; line-height: 1.6;">Nelson dirigió una sesión de bootcamp sobre automatización e inteligencia artificial, donde los participantes compartieron sus motivaciones y estrategias para implementar estas tecnologías en sus respectivos campos laborales. Durante la reunión, se discutió la importancia de definir procesos de negocio antes de implementar IA, se abordó la gestión del tiempo para el aprendizaje y se realizó un ejercicio de mapeo de actividades laborales para identificar oportunidades de automatización.</p>
+                <p style="margin-bottom: 1rem; line-height: 1.6;">Los participantes, incluyendo a Jenny, Pedro y David, expresaron su interés en utilizar herramientas como ChatGPT, Canva y transcripción automática para mejorar su eficiencia. Jenny busca automatizar procesos en su trabajo bancario, Pedro desea aplicar la IA en la industria textil y en la docencia, mientras que David quiere implementar la automatización en su negocio deportivo y en capacitaciones virtuales.</p>
+                <p style="margin-bottom: 1rem; line-height: 1.6;">Nelson explicó el concepto de "inversión de tiempo": dedicar horas inicialmente para automatizar tareas repetitivas permite multiplicar la productividad a largo plazo. Enfatizó que el uso de IA puede ser más efectivo si se entiende su caso de uso y se identifican los procesos que se pueden automatizar. Sugirió dedicar entre 6 y 10 horas semanales durante 20 semanas para aprender e implementar IA en el trabajo, y recomendó reflexionar sobre cómo encontrar este tiempo, qué actividades reducir y en qué horarios trabajar.</p>
+                <p style="margin-bottom: 1rem; line-height: 1.6;">Se realizó un inventario y análisis detallado de tareas diarias para identificar las actividades que consumen más tiempo y representan mejores oportunidades de automatización. Nelson guió a los participantes en la categorización de sus actividades laborales, calculando el tiempo mensual dedicado a cada una y priorizando aquellas que, una vez automatizadas, liberarían más horas para tareas estratégicas. Los participantes aprendieron a balancear el nivel de detalle al describir sus actividades para facilitar decisiones sobre qué procesos optimizar primero.</p>
+                <p style="margin-bottom: 1rem; line-height: 1.6;">Se destacó también la importancia de la resiliencia y la gestión de la frustración al trabajar con IA, mencionando que el proceso de aprendizaje implica prueba y error. Nelson recomendó liberar espacio en las computadoras para un mejor rendimiento y considerar herramientas de pago como ChatGPT Plus o Claude para proyectos más avanzados. Como plan de acción concreto, los participantes acordaron crear 3 prompts específicos que ahorren horas de trabajo semanales, integrar al menos 2 herramientas de IA en sus flujos de trabajo y automatizar completamente un proceso laboral en los próximos meses.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="module-section-2">
+    <h2 class="section-title">Sesión 2</h2>
+    
+    <!-- Tarjeta del módulo unificada con video y contenido -->
+    <div class="module-card" style="padding-bottom: 1.5rem;">
+        <div class="module-content">
+            <span class="module-status status-available">Disponible</span>
+            <h3>Sesión 2: Modelos de IA para automatización profesional</h3>
+            <p>Aprende sobre las capacidades de diferentes modelos de lenguaje y cómo aplicarlos para optimizar tareas laborales específicas.</p>
+        </div>
+        
+        <div class="video-container" style="margin: 1.5rem;">
+            <iframe id="vimeo-player-2" style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://player.vimeo.com/video/1080851837" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        
+        <button id="summary-toggle-2" class="btn btn-outline" style="margin-top: 1.5rem; display: block; margin-left: auto; margin-right: auto; width: 200px;">Ver Resumen</button>
+        
+        <div id="summary-content-2" class="module-summary">
+            <h4>Resumen de la Sesión 2: Modelos de IA para automatización</h4>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">En esta sesión se discutieron las capacidades y aplicaciones de diferentes herramientas de IA como ChatGPT, Claude, Gemini y Grok para optimizar tareas laborales y mejorar la eficiencia en diversos ámbitos profesionales. Los participantes compartieron experiencias y propuestas para implementar estas tecnologías en sus roles, mientras se enfatizó la importancia de la dirección y retroalimentación humana en el proceso.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Nelson explicó cómo crear y utilizar proyectos en ChatGPT para diversos fines, destacando la importancia de subir documentos relevantes para proporcionar contexto y obtener respuestas más precisas. También demostró cómo los modelos pueden realizar investigaciones a fondo, generar contenido en diversos formatos y procesar diferentes tipos de documentos para ofrecer resultados detallados y estratégicos.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Se analizaron casos prácticos como la creación de propuestas de transformación en ingeniería clínica, automatización de contratos, generación de informes empresariales y análisis de precios de commodities. Los participantes aprendieron a utilizar múltiples modelos de IA para obtener perspectivas más completas sobre un tema, mejorando iterativamente las respuestas iniciales.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">La sesión incluyó demostraciones sobre cómo estructurar solicitudes efectivas a la IA y cómo crear plantillas estandarizadas para tareas repetitivas. Se enfatizó la importancia de utilizar estas herramientas para tareas complejas y estratégicas, no solo para tareas operativas simples, aprovechando los avances en la memoria de contexto y la reducción en el costo de uso.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Como siguientes pasos, los participantes acordaron: completar el Excel con las actividades diarias y el tiempo que toman, probar la IA con documentos reales para verificar su eficacia, preparar 2-3 prompts estandarizados para la próxima sesión, identificar casos donde los modelos no dieron el resultado esperado, y compartir sus experiencias de uso en la próxima reunión.</p>
+        </div>
+    </div>
+</section>
+<section id="module-section-3">
+    <h2 class="section-title">Sesión 3</h2>
+    
+    <!-- Tarjeta del módulo unificada con video y contenido -->
+    <div class="module-card" style="padding-bottom: 1.5rem;">
+        <div class="module-content">
+            <span class="module-status status-available">Disponible</span>
+            <h3>Sesión 3: Optimización de Prompts Avanzados</h3>
+            <p>Aprende técnicas avanzadas para crear prompts efectivos y optimizar tus interacciones con modelos de IA.</p>
+        </div>
+        
+        <div class="video-container" style="margin: 1.5rem;">
+            <iframe id="vimeo-player-3" style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://player.vimeo.com/video/1082872012" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        
+        <button id="summary-toggle-3" class="btn btn-outline" style="margin-top: 1.5rem; display: block; margin-left: auto; margin-right: auto; width: 200px;">Ver Resumen</button>
+        
+        <div id="summary-content-3" class="module-summary">
+            <h4>Resumen de la Sesión 3</h4>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Nelson dirigió una sesión de seguimiento sobre el uso de inteligencia artificial en el trabajo, donde los participantes compartieron experiencias y estrategias. Se exploraron modelos como ChatGPT y Claude, enfatizando la creación de "prompts" reutilizables para tareas específicas. Los participantes discutieron aplicaciones prácticas como conversión de catálogos, redacción de informes y automatización de correos.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Se demostró cómo crear prompts reutilizables a partir de conversaciones previas con IA. Nelson compartió su proceso optimizado para crear propuestas, reduciendo el tiempo de 8-10 horas a 2-4 horas. Se recomendó explorar diferentes aplicaciones y versiones de modelos de lenguaje, aprovechando funcionalidades como audio y video. La comparación entre modelos mostró que Claude frecuentemente ofrece resultados más detallados.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Los participantes deberán: construir una biblioteca de prompts reutilizables; explorar aplicaciones de ChatGPT y Claude; leer guías sobre prompts; crear e integrar al menos un prompt en su flujo de trabajo; y revisar la grabación de la sesión. Tareas específicas incluyen: Narda implementará IA para convertir catálogos; Jenny optimizará redacción de correos; Mery identificará proyectos para aplicar IA; y todos experimentarán con los modelos compartidos por Nelson.</p>
+        </div>
+    </div>
+    <section id="module-section-4">
+    <h2 class="section-title">Sesión 4</h2>
+    
+    <!-- Tarjeta del módulo unificada con video y contenido -->
+    <div class="module-card" style="padding-bottom: 1.5rem;">
+        <div class="module-content">
+            <span class="module-status status-available">Disponible</span>
+            <h3>Sesión 4: Optimización de Flujos de Trabajo con IA</h3>
+            <p>Descubre cómo implementar la inteligencia artificial para optimizar y automatizar flujos de trabajo profesionales.</p>
+        </div>
+        
+        <div class="video-container" style="margin: 1.5rem;">
+            <iframe id="vimeo-player-4" style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://player.vimeo.com/video/1085334062" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        
+        <button id="summary-toggle-4" class="btn btn-outline" style="margin-top: 1.5rem; display: block; margin-left: auto; margin-right: auto; width: 200px;">Ver Resumen</button>
+        
+        <div id="summary-content-4" class="module-summary">
+            <h4>Resumen de la Sesión 4: Optimización de Flujos de Trabajo</h4>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">El equipo discutió el uso de inteligencia artificial para optimizar diversos flujos de trabajo profesionales. Pedro compartió cómo logró reducir el tiempo de preparación de sus clases de 3.5 horas a aproximadamente 10 minutos utilizando ChatGPT y Claude para generar y estructurar contenido, aunque mencionó que aún existen desafíos con la generación automática de archivos y la integración completa con Canva.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Durante la sesión, Nelson enfatizó la importancia de robustecer los prompts para obtener mejores resultados, en lugar de simplemente cambiar de modelo. Compartió un ejemplo detallado de cómo desarrolló un prompt complejo para estandarizar CVs, explicando cómo cada línea del prompt surgió de resolver una frustración o error previo. Este enfoque de mejora continua demostró ser más efectivo que buscar soluciones inmediatas.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Los participantes también exploraron casos específicos de aplicación de IA, como el análisis de imágenes, la creación de fórmulas en Excel y la generación de resúmenes de reuniones. Nelson ofreció consejos prácticos para mejorar los resultados, como utilizar capturas de pantalla para proporcionar contexto visual y pedir al modelo que aprenda de intentos anteriores para refinar sus respuestas.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Se realizó una demostración práctica sobre cómo utilizar modelos de lenguaje para crear y editar páginas web mediante comandos de texto. Nelson explicó que este enfoque permite obtener resultados sin necesidad de habilidades técnicas específicas, destacando que lo fundamental es proporcionar instrucciones claras, retroalimentación precisa y realizar una verificación final de los resultados.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Como próximos pasos, el equipo acordó seguir refinando sus prompts, compartir avances y desafíos en la próxima reunión, explorar diferentes modelos de lenguaje como ChatGPT, Claude, Grok y Gemini, y practicar la creación de páginas web interactivas utilizando estas herramientas de IA, con un enfoque en la mejora continua a través de iteraciones y retroalimentación.</p>
+        </div>
+    </div>
+<section id="module-section-5">
+    <h2 class="section-title">Sesión 5</h2>
+    
+    <!-- Tarjeta del módulo unificada con video y contenido -->
+    <div class="module-card" style="padding-bottom: 1.5rem;">
+        <div class="module-content">
+            <span class="module-status status-available">Disponible</span>
+            <h3>Sesión 5: Modelos de IA y Creación de Páginas Web</h3>
+            <p>Explora las capacidades de diferentes modelos de IA como ChatGPT, Claude y Gémini para crear páginas web interactivas y mejorar presentaciones.</p>
+        </div>
+        
+        <div class="video-container" style="margin: 1.5rem;">
+            <iframe id="vimeo-player-5" style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://player.vimeo.com/video/1087160345" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        
+        <button id="summary-toggle-5" class="btn btn-outline" style="margin-top: 1.5rem; display: block; margin-left: auto; margin-right: auto; width: 200px;">Ver Resumen</button>
+        
+        <div id="summary-content-5" class="module-summary">
+            <h4>Resumen de la Sesión 5: Modelos de IA y Creación Web</h4>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Nelson dirigió una sesión sobre el uso de modelos de lenguaje e inteligencia artificial en el ámbito laboral, explorando diversas herramientas y plataformas como ChatGPT, Claude y Gémini. Se discutió cómo utilizar estas tecnologías para mejorar la presentación de informes, crear visualizaciones y desarrollar páginas web interactivas utilizando HTML.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Durante la sesión se abordaron temas como la presentación ejecutiva de casos de cobranza, mostrando cómo reducir el texto, hacerlo visual y adaptarlo a un formato de presentación ejecutiva. Nelson enfatizó la importancia de dar múltiples retroalimentaciones para obtener resultados óptimos y demostró cómo crear "prompts" personalizados reutilizables.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Se explicaron las capacidades de diferentes modelos de inteligencia artificial como Claude, GPT, Copilot y Gémini, destacando sus usos específicos para generar resúmenes, crear visualizaciones y trabajar con código HTML. Los participantes aprendieron que aunque no es necesario ser programador, entender conceptos básicos de código puede ser beneficioso al trabajar con IA.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Nelson demostró cómo la IA ha hecho que el HTML sea más accesible y económico, permitiendo a los no programadores crear contenido web fácilmente. Se enseñó cómo usar ChatGPT para generar código HTML, cómo editarlo manualmente, y la importancia de entender los conceptos básicos de HTML para aprovechar al máximo estas herramientas.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">La sesión concluyó con instrucciones prácticas sobre cómo editar y personalizar código HTML, crear presentaciones interactivas, y publicar páginas web en GitHub. Los participantes practicaron modificando texto, insertando imágenes y ajustando estilos, mientras Nelson proporcionó orientación sobre cómo interactuar eficazmente con modelos de lenguaje para generar y modificar código según necesidades específicas.</p>
+        </div>
+    </div>        
+</section>
+<section id="module-section-6">
+    <h2 class="section-title">Sesión 6</h2>
+    
+    <!-- Tarjeta del módulo unificada con video y contenido -->
+    <div class="module-card" style="padding-bottom: 1.5rem;">
+        <div class="module-content">
+            <span class="module-status status-available">Disponible</span>
+            <h3>Sesión 6: Automatizando con Appscript</h3>
+            <p>Descubre cómo automatizar tareas en Google Workspace utilizando Google Apps Script para crear flujos de trabajo eficientes.</p>
+        </div>
+        
+        <div class="video-container" style="margin: 1.5rem;">
+            <iframe id="vimeo-player-6" style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://player.vimeo.com/video/1089052990" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        
+        <button id="summary-toggle-6" class="btn btn-outline" style="margin-top: 1.5rem; display: block; margin-left: auto; margin-right: auto; width: 200px;">Ver Resumen</button>
+        
+        <div id="summary-content-6" class="module-summary">
+            <h4>Resumen de la Sesión 6: Automatizando con Apps Script</h4>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">En esta sesión introductoria a Google Apps Script, los participantes exploraron los conceptos fundamentales de esta poderosa herramienta de automatización integrada en Google Workspace. Se comenzó con la creación del clásico "Hello World" para familiarizarse con el entorno de desarrollo y entender cómo ejecutar scripts básicos dentro del ecosistema de Google.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Los participantes aprendieron qué es Google Apps Script y para qué sirve: una plataforma de desarrollo basada en JavaScript que permite automatizar tareas entre las aplicaciones de Google como Sheets, Gmail, Drive, Calendar y muchas más. Se destacó cómo esta herramienta puede eliminar tareas repetitivas y crear flujos de trabajo inteligentes sin necesidad de ser un programador experto.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Durante la sesión se realizaron ejercicios prácticos trabajando con Google Sheets, donde los participantes aprendieron a manipular datos, leer y escribir en celdas, y automatizar cálculos. También se exploró la integración con Gmail, mostrando cómo Apps Script puede enviar correos automáticos, procesar mensajes entrantes y crear notificaciones personalizadas basadas en eventos específicos.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Se discutió el enorme potencial de Apps Script para automatizar procesos laborales complejos, desde la generación automática de reportes hasta la sincronización de datos entre diferentes plataformas. Los participantes comprendieron que aunque se trata de conceptos básicos, estas herramientas pueden escalar para crear soluciones empresariales robustas que ahorren horas de trabajo manual.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">La sesión concluyó con una visión general de las posibilidades futuras: creación de complementos personalizados, integración con APIs externas, automatización de flujos de trabajo complejos y desarrollo de aplicaciones web simples. Se enfatizó que dominar estos conceptos básicos es el primer paso para desbloquear un mundo de automatización que puede transformar significativamente la eficiencia en el trabajo diario.</p>
+        </div>
+    </div>        
+</section>
+<section id="module-section-7">
+    <h2 class="section-title">Sesión 7</h2>
+    
+    <!-- Tarjeta del módulo unificada con video y contenido -->
+    <div class="module-card" style="padding-bottom: 1.5rem;">
+        <div class="module-content">
+            <span class="module-status status-available">Disponible</span>
+            <h3>Sesión 7: Automatización avanzada con Apps Script y APIs</h3>
+            <p>Aprende técnicas avanzadas de automatización utilizando Google Apps Script, integración con APIs externas y generación automática de documentos.</p>
+        </div>
+        
+        <div class="video-container" style="margin: 1.5rem;">
+            <iframe id="vimeo-player-7" style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://player.vimeo.com/video/1091426930" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        
+        <button id="summary-toggle-7" class="btn btn-outline" style="margin-top: 1.5rem; display: block; margin-left: auto; margin-right: auto; width: 200px;">Ver Resumen</button>
+        
+        <div id="summary-content-7" class="module-summary">
+            <h4>Resumen de la Sesión 7: Automatización Avanzada con Apps Script</h4>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Esta sesión se centró en aplicaciones avanzadas de Google Apps Script, explorando casos prácticos como el procesamiento de archivos de audio, la generación automática de certificados y contratos, y la organización inteligente de documentos en Google Drive. Los participantes aprendieron a integrar APIs externas para automatizar tareas complejas y crear soluciones personalizadas sin necesidad de experiencia previa en programación.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Se desarrollaron varios proyectos específicos durante la sesión. Narda trabajó en la automatización de encuestas de audio, creando un sistema que procesa 757 archivos de audio contra una base de datos de 3,500 registros. El sistema incluye renombrado automático, validación de datos y notificaciones automáticas para el personal de campo utilizando Google Forms integrado con Apps Script.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Nelson demostró la creación de un sistema automatizado para generar certificados de participación en PDF, que toma datos de formularios de Google, personaliza plantillas de presentación y envía los certificados por correo electrónico de forma automática. También se exploró la aplicación similar para generar contratos de alquiler personalizados con capacidades de firma digital.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">La sesión cubrió el uso de APIs externas, específicamente la integración con la API de SUNAT para obtener tipos de cambio automáticamente y APIs de consulta empresarial. Los participantes aprendieron cómo Apps Script puede servir como "puerta trasera" para comunicarse con servicios web y automatizar actualizaciones de datos en tiempo real en hojas de cálculo.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Mery implementó un sistema para organizar más de 1,000 manuales de equipos médicos almacenados en Google Drive, creando scripts que generan listados estructurados por proveedor y equipo. Jenny exploró la automatización del tipo de cambio en procesos de cierre contable, mientras que David desarrolló plantillas automatizadas para contratos de venta de vehículos y sistemas de reservas para su campo deportivo. La sesión enfatizó comenzar con proyectos pequeños y escalar gradualmente la complejidad.</p>
+        </div>
+    </div>        
+</section>
+<section id="module-section-8">
+    <h2 class="section-title">Sesión 8</h2>
+    
+    <!-- Tarjeta del módulo unificada con video y contenido -->
+    <div class="module-card" style="padding-bottom: 1.5rem;">
+        <div class="module-content">
+            <span class="module-status status-available">Disponible</span>
+            <h3>Sesión 8: Herramientas de IA para empresas familiares</h3>
+            <p>Explora herramientas avanzadas de IA como transcripción de reuniones, creación de avatares digitales, automatización de atención al cliente y visión por computadora para optimizar procesos empresariales.</p>
+        </div>
+        
+        <div class="video-container" style="margin: 1.5rem;">
+            <iframe id="vimeo-player-8" style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://player.vimeo.com/video/1093331887" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        
+        <button id="summary-toggle-8" class="btn btn-outline" style="margin-top: 1.5rem; display: block; margin-left: auto; margin-right: auto; width: 200px;">Ver Resumen</button>
+        
+        <div id="summary-content-8" class="module-summary">
+            <h4>Resumen de la Sesión 8: Herramientas de IA para empresas</h4>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">El equipo discutió el uso de herramientas de inteligencia artificial para mejorar la eficiencia en la gestión de empresas familiares y otros contextos empresariales, incluyendo transcripción, análisis de reuniones y generación de contenido. También exploraron las capacidades de los modelos de lenguaje actuales, la creación de avatares digitales y la automatización de tareas como atención al cliente y ventas.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Nelson explicó cómo utilizar herramientas de transcripción y análisis de reuniones, incluyendo opciones en Zoom, Word y Google Docs, para mejorar la eficiencia empresarial. Jenny compartió su experiencia utilizando estas herramientas para preparar presentaciones ejecutivas y análisis de cierre de mes, mientras que se discutieron aplicaciones prácticas como la planificación de la demanda, gestión de almacenes y mejora de procesos de cobranza.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Se presentaron herramientas como HeyGen para crear videos con avatares personalizados, permitiendo generar contenido audiovisual a partir de texto escrito. Esta tecnología demostró ser útil para crear presentaciones corporativas, capacitaciones y contenido para redes sociales, con funciones adicionales como conversión de PDF a video y traducción a otros idiomas.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Nelson demostró las capacidades de Eleven Labs para crear agentes de llamadas y atención al cliente, mostrando cómo configurar agentes de soporte técnico y ventas. Se exploró la personalización de agentes mediante selección de idiomas, mensajes de bienvenida y configuración de prompts que definen comportamiento y personalidad, así como la integración con bases de conocimientos para mejorar respuestas.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">La sesión también cubrió herramientas de visión por computadora como Landing AI para extraer información de documentos complejos y detectar objetos en imágenes. Los participantes exploraron el potencial de estas tecnologías para automatizar procesos en diversos sectores como control de calidad en manufactura y monitoreo de seguridad, creando modelos de clasificación para control de calidad de telas como ejemplo práctico.</p>
+        </div>
+    </div>        
+</section>                
+<section id="module-section-9">
+    <h2 class="section-title">Sesión 9</h2>
+    
+    <!-- Tarjeta del módulo unificada con video y contenido -->
+    <div class="module-card" style="padding-bottom: 1.5rem;">
+        <div class="module-content">
+            <span class="module-status status-available">Disponible</span>
+            <h3>Sesión 9: Mejorando la Productividad con Herramientas de IA</h3>
+            <p>Aprende a usar Gemini y Copilot para mejorar la productividad, técnicas avanzadas de prompting y automatización de procesos laborales.</p>
+        </div>
+        
+        <div class="video-container" style="margin: 1.5rem;">
+            <iframe id="vimeo-player-9" style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://player.vimeo.com/video/1097221517" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        
+        <button id="summary-toggle-9" class="btn btn-outline" style="margin-top: 1.5rem; display: block; margin-left: auto; margin-right: auto; width: 200px;">Ver Resumen</button>
+        
+        <div id="summary-content-9" class="module-summary">
+            <h4>Resumen de la Sesión 9: Productividad con IA Avanzada</h4>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">El equipo discutió el uso de herramientas de inteligencia artificial como Gemini y Copilot para mejorar la productividad, con un enfoque en la redacción de correos electrónicos y el análisis de datos. También exploraron la integración de estas herramientas en aplicaciones de Microsoft y Google, y la importancia de proporcionar instrucciones claras y estructuradas a los modelos de lenguaje para obtener resultados deseados.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Nelson explicó cómo usar Gemini y Copilot para mejorar la productividad, especialmente en la redacción de correos electrónicos. Nathaly compartió su experiencia positiva utilizando GPT para analizar datos y crear presentaciones. Jenny mencionó que usa ChatGPT tomando fotos de documentos. El grupo intentó ayudar a Nathaly a encontrar y activar la función de Copilot en su correo electrónico de Microsoft, explorando diferentes opciones de configuración.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Se demostró cómo utilizar herramientas de inteligencia artificial como ChatGPT y Gemini para mejorar la productividad en tareas de escritura y análisis de datos. Nelson mostró cómo estas herramientas pueden ayudar a redactar correos electrónicos, crear documentos, generar fórmulas en hojas de cálculo y analizar datos directamente en aplicaciones como Google Sheets y Microsoft Excel, enfatizando su capacidad para adaptarse al estilo de escritura del usuario.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">La sesión cubrió las capacidades de integración de herramientas de IA como Gemini y Copilot en aplicaciones de Microsoft y Google, destacando su utilidad para analizar datos directamente en Excel y Google Drive. David compartió su experiencia explorando herramientas como N8N y Airtable para automatizaciones, así como tecnologías de generación de voz como Eleven Labs. Se enfatizó la importancia de dominar las técnicas de prompting para mejorar la comunicación con los modelos de lenguaje.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Nelson explicó técnicas avanzadas de prompting para mejorar la interacción con modelos de lenguaje, enfocándose en la cadena de pensamiento y la importancia de guiar al modelo paso a paso para obtener resultados más precisos y predecibles. Se discutió cómo la ingeniería de prompts es crucial para lograr consistencia en la automatización, especialmente en tareas de traducción y extracción de información, y cómo las instrucciones específicas son fundamentales para obtener resultados útiles en procesos automatizados.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;"><strong>Próximos pasos acordados:</strong> Nathaly activará y configurará Copilot en su cuenta de Microsoft, explorará las funcionalidades para análisis de datos y organizará capacitaciones para su equipo en Movistar. Jenny realizará el tutorial de Gemini. Nelson preparará una sesión sobre tácticas y sesgos de los modelos de lenguaje y compartirá recursos adicionales sobre técnicas de prompting. David continuará explorando N8N, Airtable y Eleven Labs. El equipo practicará conceptos de ingeniería de prompts, experimentará con técnicas de cadena de pensamiento y explorará el uso de agentes basados en modelos de lenguaje para automatizaciones.</p>
+        </div>
+    </div>        
+</section>    
+</main>
+
+<footer>
+    <div class="copyright">
+        <p>© 2025 Bootcamp Irreemplazable. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+<script>
+    // Configuración del sistema de login
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginScreen = document.getElementById('login-screen');
+        const accessCode = document.getElementById('access-code');
+        const loginButton = document.getElementById('login-button');
+        const errorMessage = document.getElementById('error-message');
+        
+        // Código de acceso - Cámbialo por el que prefieras
+        const correctCode = "CAMP2025";
+        
+        // Verificar si ya está autenticado
+        if (localStorage.getItem('tallerIAAuth') === 'true') {
+            loginScreen.style.display = 'none';
+        }
+        
+        // Función para verificar el código
+        function checkAccessCode() {
+            if (accessCode.value === correctCode) {
+                // Código correcto
+                localStorage.setItem('tallerIAAuth', 'true');
+                loginScreen.style.display = 'none';
+                errorMessage.style.display = 'none';
+            } else {
+                // Código incorrecto
+                errorMessage.style.display = 'block';
+                accessCode.value = '';
+                accessCode.focus();
+            }
+        }
+        
+        // Event listeners
+        loginButton.addEventListener('click', checkAccessCode);
+        
+        accessCode.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkAccessCode();
+            }
+        });
+    });
+
+// Función para mostrar/ocultar el resumen
+document.addEventListener('DOMContentLoaded', function() {
+    const summaryToggle = document.getElementById('summary-toggle');
+    const summaryContent = document.getElementById('summary-content');
+    const summaryToggle2 = document.getElementById('summary-toggle-2');
+    const summaryContent2 = document.getElementById('summary-content-2');
+    
+    summaryToggle.addEventListener('click', function() {
+        if (summaryContent.style.display === 'none' || summaryContent.style.display === '') {
+            summaryContent.style.display = 'block';
+            summaryToggle.textContent = 'Ocultar Resumen';
+        } else {
+            summaryContent.style.display = 'none';
+            summaryToggle.textContent = 'Ver Resumen';
+        }
+    });
+    
+    if (summaryToggle2) {
+        summaryToggle2.addEventListener('click', function() {
+            if (summaryContent2.style.display === 'none' || summaryContent2.style.display === '') {
+                summaryContent2.style.display = 'block';
+                summaryToggle2.textContent = 'Ocultar Resumen';
+            } else {
+                summaryContent2.style.display = 'none';
+                summaryToggle2.textContent = 'Ver Resumen';
+            }
+        });
+    }
+});
+// Para el módulo 3
+const summaryToggle3 = document.getElementById('summary-toggle-3');
+const summaryContent3 = document.getElementById('summary-content-3');
+
+if (summaryToggle3) {
+    summaryToggle3.addEventListener('click', function() {
+        if (summaryContent3.style.display === 'none' || summaryContent3.style.display === '') {
+            summaryContent3.style.display = 'block';
+            summaryToggle3.textContent = 'Ocultar Resumen';
+        } else {
+            summaryContent3.style.display = 'none';
+            summaryToggle3.textContent = 'Ver Resumen';
+        }
+    });
+}
+// Para el módulo 4
+const summaryToggle4 = document.getElementById('summary-toggle-4');
+const summaryContent4 = document.getElementById('summary-content-4');
+
+if (summaryToggle4) {
+    summaryToggle4.addEventListener('click', function() {
+        if (summaryContent4.style.display === 'none' || summaryContent4.style.display === '') {
+            summaryContent4.style.display = 'block';
+            summaryToggle4.textContent = 'Ocultar Resumen';
+        } else {
+            summaryContent4.style.display = 'none';
+            summaryToggle4.textContent = 'Ver Resumen';
+        }
+    });
+}
+
+// Para el módulo 5
+const summaryToggle5 = document.getElementById('summary-toggle-5');
+const summaryContent5 = document.getElementById('summary-content-5');
+
+if (summaryToggle5) {
+    summaryToggle5.addEventListener('click', function() {
+        if (summaryContent5.style.display === 'none' || summaryContent5.style.display === '') {
+            summaryContent5.style.display = 'block';
+            summaryToggle5.textContent = 'Ocultar Resumen';
+        } else {
+            summaryContent5.style.display = 'none';
+            summaryToggle5.textContent = 'Ver Resumen';
+        }
+    });
+}
+// Para el módulo 6
+const summaryToggle6 = document.getElementById('summary-toggle-6');
+const summaryContent6 = document.getElementById('summary-content-6');
+
+if (summaryToggle6) {
+    summaryToggle6.addEventListener('click', function() {
+        if (summaryContent6.style.display === 'none' || summaryContent6.style.display === '') {
+            summaryContent6.style.display = 'block';
+            summaryToggle6.textContent = 'Ocultar Resumen';
+        } else {
+            summaryContent6.style.display = 'none';
+            summaryToggle6.textContent = 'Ver Resumen';
+        }
+    });
+} 
+// Para el módulo 7
+const summaryToggle7 = document.getElementById('summary-toggle-7');
+const summaryContent7 = document.getElementById('summary-content-7');
+
+if (summaryToggle7) {
+    summaryToggle7.addEventListener('click', function() {
+        if (summaryContent7.style.display === 'none' || summaryContent7.style.display === '') {
+            summaryContent7.style.display = 'block';
+            summaryToggle7.textContent = 'Ocultar Resumen';
+        } else {
+            summaryContent7.style.display = 'none';
+            summaryToggle7.textContent = 'Ver Resumen';
+        }
+    });
+}    
+    // Para el módulo 8
+const summaryToggle8 = document.getElementById('summary-toggle-8');
+const summaryContent8 = document.getElementById('summary-content-8');
+
+if (summaryToggle8) {
+    summaryToggle8.addEventListener('click', function() {
+        if (summaryContent8.style.display === 'none' || summaryContent8.style.display === '') {
+            summaryContent8.style.display = 'block';
+            summaryToggle8.textContent = 'Ocultar Resumen';
+        } else {
+            summaryContent8.style.display = 'none';
+            summaryToggle8.textContent = 'Ver Resumen';
+        }
+    });
+}
+
+// Para el módulo 9
+const summaryToggle9 = document.getElementById('summary-toggle-9');
+const summaryContent9 = document.getElementById('summary-content-9');
+
+if (summaryToggle9) {
+    summaryToggle9.addEventListener('click', function() {
+        if (summaryContent9.style.display === 'none' || summaryContent9.style.display === '') {
+            summaryContent9.style.display = 'block';
+            summaryToggle9.textContent = 'Ocultar Resumen';
+        } else {
+            summaryContent9.style.display = 'none';
+            summaryToggle9.textContent = 'Ver Resumen';
+        }
+    });
+}
+</script>
+</body>
+</html>
