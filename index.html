@@ -575,7 +575,36 @@
             <p style="margin-bottom: 1rem; line-height: 1.6;"><strong>Próximos pasos acordados:</strong> Nathaly activará y configurará Copilot en su cuenta de Microsoft, explorará las funcionalidades para análisis de datos y organizará capacitaciones para su equipo en Movistar. Jenny realizará el tutorial de Gemini. Nelson preparará una sesión sobre tácticas y sesgos de los modelos de lenguaje y compartirá recursos adicionales sobre técnicas de prompting. David continuará explorando N8N, Airtable y Eleven Labs. El equipo practicará conceptos de ingeniería de prompts, experimentará con técnicas de cadena de pensamiento y explorará el uso de agentes basados en modelos de lenguaje para automatizaciones.</p>
         </div>
     </div>        
-</section>    
+</section>
+<section id="module-section-10">
+    <h2 class="section-title">Sesión 10</h2>
+    
+    <!-- Tarjeta del módulo unificada con video y contenido -->
+    <div class="module-card" style="padding-bottom: 1.5rem;">
+        <div class="module-content">
+            <span class="module-status status-available">Disponible</span>
+            <h3>Sesión 10: Seguimiento de Proyectos y Automatización Empresarial</h3>
+            <p>Revisión integral de proyectos en curso, definición de próximos pasos y estrategias avanzadas de implementación de IA en diferentes departamentos empresariales.</p>
+        </div>
+        
+        <div class="video-container" style="margin: 1.5rem;">
+            <iframe id="vimeo-player-10" style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://player.vimeo.com/video/1098988454" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        
+        <button id="summary-toggle-10" class="btn btn-outline" style="margin-top: 1.5rem; display: block; margin-left: auto; margin-right: auto; width: 200px;">Ver Resumen</button>
+        
+        <div id="summary-content-10" class="module-summary">
+            <h4>Resumen de la Sesión 10: Seguimiento y Automatización Empresarial</h4>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Esta sesión se centró en el seguimiento integral de proyectos empresariales utilizando inteligencia artificial y la definición de estrategias de implementación para diferentes departamentos. El equipo discutió la organización de proyectos complejos como la implementación del Departamento de Ingeniería, la formación de líderes, y la integración de funciones de chatbot en páginas web corporativas.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Se abordaron múltiples áreas de aplicación de IA incluyendo la personalización de páginas web con temas dinámicos, el uso de inteligencia artificial para redactar informes financieros complejos, y el análisis de viabilidad de startups. Los participantes compartieron experiencias sobre cómo utilizar modelos de lenguaje para estructurar ideas, organizar proyectos y crear sistemas de inventario basados en Google Sheets con notificaciones automáticas.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;"><strong>Proyectos específicos en desarrollo:</strong> Mery lideró la discusión sobre el proyecto de implementación del Departamento de Ingeniería con un tiempo asignado de 1.5 días semanales, enfocándose en la definición de perfiles de líderes y el desarrollo de programas de formación integrados. David trabajó en la implementación de cambios en páginas web de turismo, incluyendo la integración de botones de WhatsApp y la comparación de capacidades entre Gemini y Claude para desarrollo web estático.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Jenny continuó perfeccionando el uso de ChatGPT para analizar y presentar datos financieros complejos, especialmente para informes de cierre de mes, mientras desarrollaba prompts para análisis FODA de equipos. Nathaly se enfocó en utilizar IA para generar descripciones detalladas de funciones empresariales y refinar prompts para analizar reportes de Power BI, trabajando en la optimización de análisis de ventas y portafolios de marcas.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;"><strong>Desarrollos técnicos avanzados:</strong> Nelson facilitó la discusión sobre la creación de artefactos interactivos en Claude, técnicas para convertir notas de eventos en presentaciones estructuradas, y el desarrollo de sistemas de inventario automatizados con AppScript. Se exploraron estrategias para crear prompts efectivos, especialmente para el análisis de marcas "perro" y el establecimiento de estrategias comerciales basadas en datos.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;"><strong>Próximos pasos definidos:</strong> El equipo estableció un cronograma claro de implementación que incluye la presentación de cronogramas de formación, la creación de dashboards de seguimiento de proyectos, el desarrollo de prompts para análisis semanal de datos acumulados, y la implementación de sistemas automatizados de notificación. Todos los participantes acordaron probar y ajustar los prompts desarrollados durante la semana y preparar resultados para compartir en la siguiente reunión, enfocándose en la iteración continua y el refinamiento de procesos automatizados.</p>
+        </div>
+    </div>        
+</section>
+        
 </main>
 
 <footer>
@@ -761,6 +790,22 @@ if (summaryToggle9) {
         }
     });
 }
+
+// Para el módulo 10
+const summaryToggle10 = document.getElementById('summary-toggle-10');
+const summaryContent10 = document.getElementById('summary-content-10');
+
+if (summaryToggle10) {
+    summaryToggle10.addEventListener('click', function() {
+        if (summaryContent10.style.display === 'none' || summaryContent10.style.display === '') {
+            summaryContent10.style.display = 'block';
+            summaryToggle10.textContent = 'Ocultar Resumen';
+        } else {
+            summaryContent10.style.display = 'none';
+            summaryToggle10.textContent = 'Ver Resumen';
+        }
+    });
+}    
 </script>
 </body>
 </html>
