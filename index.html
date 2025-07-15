@@ -604,6 +604,34 @@
         </div>
     </div>        
 </section>
+<section id="module-section-11">
+    <h2 class="section-title">Sesión 11</h2>
+    
+    <!-- Tarjeta del módulo unificada con video y contenido -->
+    <div class="module-card" style="padding-bottom: 1.5rem;">
+        <div class="module-content">
+            <span class="module-status status-available">Disponible</span>
+            <h3>Sesión 11: Refinamiento de Prompts y Automatización de Procesos</h3>
+            <p>Aprende técnicas avanzadas para optimizar prompts, automatizar transcripciones de reuniones, crear aplicaciones personalizadas y utilizar herramientas de IA para diversos procesos empresariales.</p>
+        </div>
+        
+        <div class="video-container" style="margin: 1.5rem;">
+            <iframe id="vimeo-player-11" style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://player.vimeo.com/video/1101191401" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        
+        <button id="summary-toggle-11" class="btn btn-outline" style="margin-top: 1.5rem; display: block; margin-left: auto; margin-right: auto; width: 200px;">Ver Resumen</button>
+        
+        <div id="summary-content-11" class="module-summary">
+            <h4>Resumen de la Sesión 11: Refinamiento de Prompts y Automatización</h4>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Nelson lideró discusiones sobre la optimización de prompts para modelos de lenguaje, la construcción de pronombres y el uso de transcripción de audio para resúmenes ejecutivos. También exploraron el uso de modelos de lenguaje de inteligencia artificial para diversas tareas, la automatización de procesos y la creación de scripts de Google Apps Script.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">En la reunión, Nelson y Nathaly discutieron la construcción de un pron y la necesidad de dividirlo en dos partes: una para pedirle a la IA que extraiga datos de una imagen y otra para aplicar el pron de análisis a una tabla con datos correctos. Nelson enfatizó la importancia de afinar el pron y utilizar modelos como GPT-4 para tareas de alto nivel.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Se exploró el uso de la transcripción de audio para resúmenes ejecutivos. Nelson explicó cómo usar Amazon Transcribe para convertir audio en texto y luego procesarlo con Chat GPT para generar un resumen ejecutivo. Se encontró que el resultado era más preciso cuando el audio se pasaba directamente a Chat GPT en lugar de pasar por la transcripción.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Nelson explicó la evolución en la automatización de procesos, desde el trabajo manual hasta el uso de prompts reutilizables y aplicaciones personalizadas. Destacó cómo estas herramientas pueden ahorrar tiempo significativo, por ejemplo, reduciendo el procesamiento de CVs de horas a minutos, y enfatizó el potencial de crear aplicaciones propias para tareas específicas.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">La sesión cubrió cómo utilizar modelos de lenguaje para crear scripts de Google Apps Script sin necesidad de conocimientos avanzados de programación. Nelson demostró cómo generar un script que revisa el inventario en una hoja de cálculo de Google y envía correos electrónicos automáticos a proveedores cuando el stock está bajo, enfatizando que el "nuevo lenguaje de programación" es el español.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;"><strong>Próximos pasos:</strong> Nathaly revisará y comparará ambos resultados del prompt para afinar el documento, creará un prompt específico para procesar las transcripciones de las reuniones semanales con los gerentes, y experimentará con diferentes instrucciones para obtener resúmenes ejecutivos más detallados. Todos los participantes identificarán más tareas repetitivas que puedan ser optimizadas utilizando modelos de lenguaje y continuarán practicando la creación y refinamiento de prompts.</p>
+        </div>
+    </div>        
+</section>
         
 </main>
 
@@ -803,6 +831,21 @@ if (summaryToggle10) {
         } else {
             summaryContent10.style.display = 'none';
             summaryToggle10.textContent = 'Ver Resumen';
+        }
+    });
+} 
+// Para el módulo 11
+const summaryToggle11 = document.getElementById('summary-toggle-11');
+const summaryContent11 = document.getElementById('summary-content-11');
+
+if (summaryToggle11) {
+    summaryToggle11.addEventListener('click', function() {
+        if (summaryContent11.style.display === 'none' || summaryContent11.style.display === '') {
+            summaryContent11.style.display = 'block';
+            summaryToggle11.textContent = 'Ocultar Resumen';
+        } else {
+            summaryContent11.style.display = 'none';
+            summaryToggle11.textContent = 'Ver Resumen';
         }
     });
 }    
