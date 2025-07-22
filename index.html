@@ -632,7 +632,31 @@
         </div>
     </div>        
 </section>
+<section id="module-section-12">
+    <h2 class="section-title">Sesión 12</h2>
+    
+    <!-- Tarjeta del módulo unificada con video y contenido -->
+    <div class="module-card" style="padding-bottom: 1.5rem;">
+        <div class="module-content">
+            <span class="module-status status-available">Disponible</span>
+            <h3>Sesión 12: Desarrollo de Aplicativos Propios con Herramientas de IA</h3>
+            <p>Explora el desarrollo de aplicaciones personalizadas utilizando herramientas de programación asistida por IA y frameworks modernos.</p>
+        </div>
         
+        <div class="video-container" style="margin: 1.5rem;">
+            <iframe id="vimeo-player-12" style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://player.vimeo.com/video/1103320511" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        
+        <button id="summary-toggle-12" class="btn btn-outline" style="margin-top: 1.5rem; display: block; margin-left: auto; margin-right: auto; width: 200px;">Ver Resumen</button>
+        
+        <div id="summary-content-12" class="module-summary">
+            <h4>Resumen de la Sesión 12: Desarrollo de Aplicativos Propios</h4>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">En esta sesión exploramos cómo desarrollar aplicativos propios utilizando herramientas modernas de programación asistida por inteligencia artificial. Los participantes tuvieron un primer vistazo a las capacidades de diferentes frameworks y plataformas que facilitan la creación de aplicaciones personalizadas sin necesidad de conocimientos avanzados de programación.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Discutimos el potencial de herramientas que ayudan a programar, incluyendo asistentes de código con IA, plataformas de desarrollo visual y frameworks que simplifican el proceso de creación de aplicaciones. Esta sesión marcó el inicio de una nueva etapa en el bootcamp, enfocada en la creación de soluciones tecnológicas propias adaptadas a las necesidades específicas de cada participante.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Los participantes aprendieron sobre las ventajas de desarrollar aplicativos personalizados versus utilizar soluciones preexistentes, y cómo las herramientas de IA pueden acelerar significativamente el proceso de desarrollo, permitiendo a profesionales sin experiencia en programación crear aplicaciones funcionales y útiles para sus respectivos campos de trabajo.</p>
+        </div>
+    </div>        
+</section>        
 </main>
 
 <footer>
@@ -846,6 +870,21 @@ if (summaryToggle11) {
         } else {
             summaryContent11.style.display = 'none';
             summaryToggle11.textContent = 'Ver Resumen';
+        }
+    });
+}    
+// Para el módulo 12
+const summaryToggle12 = document.getElementById('summary-toggle-12');
+const summaryContent12 = document.getElementById('summary-content-12');
+
+if (summaryToggle12) {
+    summaryToggle12.addEventListener('click', function() {
+        if (summaryContent12.style.display === 'none' || summaryContent12.style.display === '') {
+            summaryContent12.style.display = 'block';
+            summaryToggle12.textContent = 'Ocultar Resumen';
+        } else {
+            summaryContent12.style.display = 'none';
+            summaryToggle12.textContent = 'Ver Resumen';
         }
     });
 }    
