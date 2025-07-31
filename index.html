@@ -656,7 +656,34 @@
             <p style="margin-bottom: 1rem; line-height: 1.6;">Los participantes aprendieron sobre las ventajas de desarrollar aplicativos personalizados versus utilizar soluciones preexistentes, y cómo las herramientas de IA pueden acelerar significativamente el proceso de desarrollo, permitiendo a profesionales sin experiencia en programación crear aplicaciones funcionales y útiles para sus respectivos campos de trabajo.</p>
         </div>
     </div>        
-</section>        
+</section> 
+<section id="module-section-13">
+    <h2 class="section-title">Sesión 13</h2>
+    
+    <!-- Tarjeta del módulo unificada con video y contenido -->
+    <div class="module-card" style="padding-bottom: 1.5rem;">
+        <div class="module-content">
+            <span class="module-status status-available">Disponible</span>
+            <h3>Sesión 13: Agentes de ChatGPT y Búsqueda Profunda para Estrategia de Negocio</h3>
+            <p>Aprende a utilizar los agentes avanzados de ChatGPT y las capacidades de búsqueda profunda para desarrollar estrategias de negocio integrales y análisis de mercado.</p>
+        </div>
+        
+        <div class="video-container" style="margin: 1.5rem;">
+            <iframe id="vimeo-player-13" style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://player.vimeo.com/video/1106089768" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        
+        <button id="summary-toggle-13" class="btn btn-outline" style="margin-top: 1.5rem; display: block; margin-left: auto; margin-right: auto; width: 200px;">Ver Resumen</button>
+        
+        <div id="summary-content-13" class="module-summary">
+            <h4>Resumen de la Sesión 13: Agentes ChatGPT y Búsqueda Profunda</h4>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Esta sesión se centra en el uso avanzado de los agentes de ChatGPT para crear estrategias de negocio robustas. Los participantes aprenden a configurar agentes especializados que pueden realizar investigaciones profundas de mercado, análisis competitivo y desarrollo de planes estratégicos utilizando las nuevas capacidades de búsqueda web integradas.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Se exploran las funcionalidades de búsqueda profunda de ChatGPT para obtener información actualizada del mercado, tendencias de la industria y análisis de competidores. Los agentes pueden ser configurados para realizar investigaciones especializadas, generar informes ejecutivos y proporcionar recomendaciones estratégicas basadas en datos en tiempo real.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Los participantes aprenden a crear agentes personalizados para diferentes áreas de negocio: análisis financiero, investigación de mercado, planificación estratégica y evaluación de oportunidades. Cada agente puede ser entrenado con prompts específicos y configurado para acceder a fuentes de información relevantes para su especialidad.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">La sesión incluye casos prácticos de implementación donde los participantes configuran sus propios agentes para resolver desafíos específicos de sus industrias, utilizando la búsqueda profunda para validar hipótesis de negocio y desarrollar estrategias basadas en evidencia real del mercado.</p>
+        </div>
+    </div>        
+</section>
+        
 </main>
 
 <footer>
@@ -888,6 +915,23 @@ if (summaryToggle12) {
         }
     });
 }    
+
+// Para el módulo 13
+const summaryToggle13 = document.getElementById('summary-toggle-13');
+const summaryContent13 = document.getElementById('summary-content-13');
+
+if (summaryToggle13) {
+    summaryToggle13.addEventListener('click', function() {
+        if (summaryContent13.style.display === 'none' || summaryContent13.style.display === '') {
+            summaryContent13.style.display = 'block';
+            summaryToggle13.textContent = 'Ocultar Resumen';
+        } else {
+            summaryContent13.style.display = 'none';
+            summaryToggle13.textContent = 'Ver Resumen';
+        }
+    });
+}
 </script>
+        
 </body>
 </html>
