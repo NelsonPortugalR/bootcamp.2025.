@@ -683,7 +683,59 @@
         </div>
     </div>        
 </section>
+<section id="module-section-14">
+    <h2 class="section-title">Sesión 14</h2>
+    
+    <!-- Tarjeta del módulo unificada con video y contenido -->
+    <div class="module-card" style="padding-bottom: 1.5rem;">
+        <div class="module-content">
+            <span class="module-status status-available">Disponible</span>
+            <h3>Sesión 14: Ingeniería de Prompts y Creación de Videos con IA</h3>
+            <p>Domina las técnicas avanzadas de ingeniería de prompts y aprende a crear videos profesionales utilizando herramientas de inteligencia artificial.</p>
+        </div>
         
+        <div class="video-container" style="margin: 1.5rem;">
+            <iframe id="vimeo-player-14" style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://player.vimeo.com/video/1110139196" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        
+        <button id="summary-toggle-14" class="btn btn-outline" style="margin-top: 1.5rem; display: block; margin-left: auto; margin-right: auto; width: 200px;">Ver Resumen</button>
+        
+        <div id="summary-content-14" class="module-summary">
+            <h4>Resumen de la Sesión 14: Ingeniería de Prompts y Videos con IA</h4>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Esta sesión profundiza en las técnicas avanzadas de ingeniería de prompts, enseñando a los participantes cómo crear instrucciones precisas y efectivas para obtener resultados óptimos de los modelos de IA. Se exploran metodologías para estructurar prompts complejos, técnicas de refinamiento iterativo y estrategias para mejorar la consistencia y calidad de las respuestas.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Los participantes aprenden a utilizar herramientas de creación de videos con inteligencia artificial, explorando plataformas que permiten generar contenido audiovisual de alta calidad a partir de texto, imágenes o instrucciones simples. Se cubren técnicas para crear presentaciones, videos explicativos, contenido para redes sociales y material educativo de manera automatizada.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Se enseñan principios fundamentales como la especificidad en las instrucciones, el uso de contexto relevante, la implementación de roles y perspectivas, y técnicas de cadena de pensamiento para guiar a la IA hacia resultados más precisos. También se exploran métodos para validar y refinar prompts basándose en los resultados obtenidos.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">La sesión incluye casos prácticos donde los participantes crean sus propios videos utilizando IA, desde guiones generados automáticamente hasta la producción final, integrando elementos visuales, audio y efectos para crear contenido profesional sin necesidad de habilidades técnicas avanzadas en edición de video.</p>
+        </div>
+    </div>        
+</section>
+
+<section id="module-section-15">
+    <h2 class="section-title">Sesión 15</h2>
+    
+    <!-- Tarjeta del módulo unificada con video y contenido -->
+    <div class="module-card" style="padding-bottom: 1.5rem;">
+        <div class="module-content">
+            <span class="module-status status-available">Disponible</span>
+            <h3>Sesión 15: Herramientas de Desarrollo con IA y ChatGPT 5</h3>
+            <p>Explora herramientas avanzadas de desarrollo asistido por IA como Cursor y descubre las nuevas capacidades revolucionarias de ChatGPT 5.</p>
+        </div>
+        
+        <div class="video-container" style="margin: 1.5rem;">
+            <iframe id="vimeo-player-15" style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://player.vimeo.com/video/1110138979" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        
+        <button id="summary-toggle-15" class="btn btn-outline" style="margin-top: 1.5rem; display: block; margin-left: auto; margin-right: auto; width: 200px;">Ver Resumen</button>
+        
+        <div id="summary-content-15" class="module-summary">
+            <h4>Resumen de la Sesión 15: Herramientas de Desarrollo y ChatGPT 5</h4>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">En esta sesión exploramos las herramientas de desarrollo asistido por inteligencia artificial, con especial enfoque en Cursor, un editor de código que revoluciona la forma de programar. Los participantes aprenden cómo estas herramientas pueden acelerar significativamente el desarrollo de software, permitiendo a programadores y no programadores crear aplicaciones complejas con mayor eficiencia.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Se presenta una introducción completa a las capacidades revolucionarias de ChatGPT 5, incluyendo sus mejoras en razonamiento, velocidad de procesamiento, capacidades multimodales avanzadas y nuevas funcionalidades que transforman la manera de interactuar con la inteligencia artificial. Los participantes descubren cómo aprovechar estas mejoras para automatizar tareas más complejas.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">La sesión cubre el uso práctico de Cursor para desarrollo web, automatización de scripts, creación de aplicaciones y integración con proyectos existentes. Se enseña cómo la IA puede sugerir código, completar funciones automáticamente, detectar errores y optimizar el rendimiento, democratizando el acceso al desarrollo de software.</p>
+            <p style="margin-bottom: 1rem; line-height: 1.6;">Los participantes aprenden a configurar entornos de desarrollo modernos, utilizar las nuevas características de ChatGPT 5 para análisis de código más profundo, generación de documentación automática y creación de arquitecturas de software más robustas. Se exploran casos de uso específicos donde estas herramientas pueden transformar flujos de trabajo empresariales.</p>
+        </div>
+    </div>        
+</section>        
 </main>
 
 <footer>
@@ -928,6 +980,37 @@ if (summaryToggle13) {
         } else {
             summaryContent13.style.display = 'none';
             summaryToggle13.textContent = 'Ver Resumen';
+        }
+    });
+}
+// Para el módulo 14
+const summaryToggle14 = document.getElementById('summary-toggle-14');
+const summaryContent14 = document.getElementById('summary-content-14');
+
+if (summaryToggle14) {
+    summaryToggle14.addEventListener('click', function() {
+        if (summaryContent14.style.display === 'none' || summaryContent14.style.display === '') {
+            summaryContent14.style.display = 'block';
+            summaryToggle14.textContent = 'Ocultar Resumen';
+        } else {
+            summaryContent14.style.display = 'none';
+            summaryToggle14.textContent = 'Ver Resumen';
+        }
+    });
+}
+
+// Para el módulo 15
+const summaryToggle15 = document.getElementById('summary-toggle-15');
+const summaryContent15 = document.getElementById('summary-content-15');
+
+if (summaryToggle15) {
+    summaryToggle15.addEventListener('click', function() {
+        if (summaryContent15.style.display === 'none' || summaryContent15.style.display === '') {
+            summaryContent15.style.display = 'block';
+            summaryToggle15.textContent = 'Ocultar Resumen';
+        } else {
+            summaryContent15.style.display = 'none';
+            summaryToggle15.textContent = 'Ver Resumen';
         }
     });
 }
